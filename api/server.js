@@ -10,10 +10,10 @@ const PORT = 4000;
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, {useNewUrlParser: true}).then(
     () => {
-        console.log('Database is connected')
+        console.log('Sucesso ao se conectar ao MongoDB')
     },
     err => {
-        console.log('Can not connect to the database' + err)
+        console.log('[Error] Falha ao se conectar ao mongoDB' + err)
     }
 );
 

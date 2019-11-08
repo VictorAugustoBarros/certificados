@@ -17,8 +17,6 @@ Login.methods.findUser = function () {
     let result = Login.find({carteira: this.carteira})
         ? "Result is " + result
         : "Registro não encontrado";
-
-    console.log(result);
 };
 
 module.exports = mongoose.model('Login', Login);
