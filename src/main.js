@@ -1,8 +1,28 @@
 import Vue from 'vue'
 import App from './App.vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-Vue.config.productionTip = false
+import VueRouter from 'vue-router';
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+Vue.use(VueRouter);
+
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+
+Vue.use(VueAxios, axios);
+
+Vue.config.productionTip = false;
+
+import LoginComponent from './components/LoginComponent.vue';
+
+const routes = [
+    {
+        name: 'login',
+        path: '/login',
+        component: LoginComponent
+    }
+];
+
+const router = new VueRouter({mode: 'history', routes: routes});
+
+new Vue(Vue.util.extend({router}, App)).$mount('#app');
