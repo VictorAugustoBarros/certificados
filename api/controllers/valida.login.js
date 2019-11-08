@@ -14,10 +14,10 @@ exports.validateUser = async (req, res,) => {
 
     if (values) {
         console.log(values);
-        return res.status(200).send(values);
+        return res.status(200).send({"message": "Registro encontrado com sucesso !", "values": values});
 
     } else {
         console.log({"Mensagem": "Registro não encontrado !"});
-        return res.status(400).send({"Mensagem": "Registro não encontrado !"});
+        return res.status(200).send({"message": "Registro não encontrado !", "values": ""});
     }
 };
