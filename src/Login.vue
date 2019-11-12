@@ -1,41 +1,35 @@
 <template>
-    <section class="form-simple">
-        <form @submit.prevent="addPost">
-            <mdb-row>
-                <mdb-col md="5">
-                    <mdb-card>
-                        <div class="header pt-3 grey lighten-2">
-                            <mdb-row class="d-flex justify-content-start">
-                                <h3 class="deep-grey-text mt-3 pb-1 mx-5">Login</h3>
-                            </mdb-row>
-                        </div>
-                        <mdb-card-body class="mx-4 mt-4">
-                            <mdb-input label="Carteira" v-model="data.body.carteira" type="text" required/>
-                            <mdb-input label="Senha" v-model="data.body.password" type="password" containerClass="mb-0" />
+    <form @submit.prevent="addPost">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="start" class="col-md-4"></div>
 
-                            <p class="font-small grey-text d-flex justify-content-end">Forgot
-                                <a href="#" class="dark-grey-text font-weight-bold ml-1"> Password?</a>
-                            </p>
+                <div id="middle" class="col-md-4">
+                    <p class="h4 text-center mb-4">Login</p>
+                    <div class="grey-text">
+                        <mdb-input label="Carteira" icon="address-card" type="text" v-model="data.body.carteira" required/>
+                        <mdb-input label="Senha" icon="lock" type="password" v-model="data.body.password" required/>
+                    </div>
 
-                            <div class="text-center mb-4 mt-5">
-                                <mdb-btn color="success" type="button" class="btn-block z-depth-2">Log in</mdb-btn>
-                            </div>
-
-                            <p class="font-small grey-text d-flex justify-content-center">Don't have an account?
-                                <a href="#" class="dark-grey-text font-weight-bold ml-1">Sign up</a>
-                            </p>
-                        </mdb-card-body>
-                    </mdb-card>
-                </mdb-col>
-            </mdb-row>
-        </form>
-    </section>
+                    <div class="text-center">
+                        <label style="color: red" id="errorLogin" ref="errorLogin"></label><br>
+                        <mdb-btn color="default" type="submit" rounded>Login</mdb-btn>
+                    </div>
+                </div>
+                <div id="end" class="col-md-4"></div>
+            </div>
+        </div>
+    </form>
 </template>
 
 <script>
-    import {mdbRow, mdbCol, mdbCard, mdbCardBody, mdbInput, mdbBtn, mdbIcon} from 'mdbvue';
+    import {mdbInput, mdbBtn} from 'mdbvue';
 
     export default {
+        components: {
+            mdbInput,
+            mdbBtn,
+        },
         data() {
             return {
                 errors: [],
@@ -58,58 +52,24 @@
                     .post(uri, this.data.body, this.data.headers)
                     .then(response => {
                         this.data.value = response.data;
-                        // eslint-disable-next-line no-console
                         if (response.data["values"]) {
+                            document.getElementById("errorLogin").innerHTML  = "";
                             window.location.href = "/index";
                         } else {
-                            alert("Registro não encontrado!");
+                            document.getElementById("errorLogin").innerHTML  = "Registro não encontrado!";
                         }
                     })
                     .catch(errors => {
                         this.errors.push(errors);
                     });
             }
-        },
-        components: {
-            mdbRow,
-            mdbCol,
-            mdbCard,
-            mdbCardBody,
-            mdbInput,
-            mdbBtn,
-            // eslint-disable-next-line vue/no-unused-components
-            mdbIcon
         }
     }
 </script>
 
 <style>
-    .form-simple .font-small {
-        font-size: 0.8rem;
-    }
-
-    .form-simple .header {
-        border-top-left-radius: .3rem;
-        border-top-right-radius: .3rem;
-    }
-
-    .form-simple input[type=text]:focus:not([readonly]) {
-        border-bottom: 1px solid #ff3547;
-        -webkit-box-shadow: 0 1px 0 0 #ff3547;
-        box-shadow: 0 1px 0 0 #ff3547;
-    }
-
-    .form-simple input[type=text]:focus:not([readonly]) + label {
-        color: #4f4f4f;
-    }
-
-    .form-simple input[type=password]:focus:not([readonly]) {
-        border-bottom: 1px solid #ff3547;
-        -webkit-box-shadow: 0 1px 0 0 #ff3547;
-        box-shadow: 0 1px 0 0 #ff3547;
-    }
-
-    .form-simple input[type=password]:focus:not([readonly]) + label {
-        color: #4f4f4f;
+    #middle {
+        padding-top: 20%;
+        height: 100%;
     }
 </style>
