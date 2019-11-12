@@ -5,6 +5,12 @@
                 <li class="nav-item">
                     <router-link to="/index" class="nav-link">Home</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link to="/about" class="nav-link">About</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/logout" class="nav-link">Logout</router-link>
+                </li>
             </ul>
         </nav>
         <br/>
@@ -22,8 +28,15 @@
     .fade-enter, .fade-leave-active {
         opacity: 0
     }
+
+    ul {
+        overflow: auto;
+    }
+
 </style>
 
 <script>
-    export default {}
+    export default {
+        components: {}
+    }
 </script>

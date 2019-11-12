@@ -26,25 +26,28 @@ Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
-import Index from './Index.vue';
-
-import Login from './Login.vue';
+import Index from './components/Index.vue';
+import Login from './components/Login.vue';
+import About from './components/About.vue';
+import Logout from './components/Logout.vue';
 
 const routes = [
     {
         name: 'index',
         path: '/index',
-        meta: {
-            title: 'Index'
-        },
         component: Index
     }, {
         name: 'login',
         path: '/login',
-        meta: {
-            title: 'Login'
-        },
         component: Login
+    }, {
+        name: 'about',
+        path: '/about',
+        component: About
+    }, {
+        name: 'logout',
+        path: '/logout',
+        component: Logout
     }
 ];
 

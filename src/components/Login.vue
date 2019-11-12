@@ -7,7 +7,8 @@
                 <div id="middle" class="col-md-4">
                     <p class="h4 text-center mb-4">Login</p>
                     <div class="grey-text">
-                        <mdb-input label="Carteira" icon="address-card" type="text" v-model="data.body.carteira" required/>
+                        <mdb-input label="Carteira" icon="address-card" type="text" v-model="data.body.carteira"
+                                   required/>
                         <mdb-input label="Senha" icon="lock" type="password" v-model="data.body.password" required/>
                     </div>
 
@@ -53,10 +54,11 @@
                     .then(response => {
                         this.data.value = response.data;
                         if (response.data["values"]) {
-                            document.getElementById("errorLogin").innerHTML  = "";
-                            window.location.href = "/index";
+                            document.getElementById("errorLogin").innerHTML = "";
+                            this.$emit("authenticated", true);
+                            this.$router.push({path: '/index'});
                         } else {
-                            document.getElementById("errorLogin").innerHTML  = "Registro não encontrado!";
+                            document.getElementById("errorLogin").innerHTML = "Registro não encontrado!";
                         }
                     })
                     .catch(errors => {

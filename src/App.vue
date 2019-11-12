@@ -1,12 +1,33 @@
 <template>
-    <Login></Login>
+    <div id="app">
+        <div id="nav">
+            <router-link v-if="authenticated" to="/login" replace></router-link>
+        </div>
+        <router-view @authenticated="setAuthenticated"/>
+    </div>
 </template>
 
 <script>
-    import Login from "@/Login";
-
     export default {
         name: 'App',
-        components: {Login},
+        data() {
+            return {
+                authenticated: false
+            }
+        },
+        mounted() {
+            if(!this.authenticated) {
+                // eslint-disable-next-line no-console
+                this.$router.replace({ name: "login" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        }
     }
 </script>
