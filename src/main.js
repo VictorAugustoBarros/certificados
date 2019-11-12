@@ -1,6 +1,16 @@
 import Vue from 'vue'
-import Main from "./components/Navigation";
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+import App from "./App";
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue);
+
+import VModal from 'vue-js-modal'
+
+Vue.use(VModal);
 
 import VueRouter from 'vue-router';
 
@@ -14,6 +24,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 import Index from './Index.vue';
+
 import Login from './Login.vue';
 
 const routes = [
@@ -33,5 +44,5 @@ const router = new VueRouter({mode: 'history', routes: routes});
 new Vue({
     el: '#app',
     router,
-    render: createEl => createEl(Main)
+    render: createEl => createEl(App)
 });
