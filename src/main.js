@@ -30,6 +30,8 @@ import Index from './components/Index.vue';
 import Login from './components/Login.vue';
 import About from './components/About.vue';
 import Logout from './components/Logout.vue';
+import Certificados from './components/Certificados.vue';
+import Usuarios from './components/Usuarios.vue';
 
 const routes = [
     {
@@ -48,6 +50,14 @@ const routes = [
         name: 'logout',
         path: '/logout',
         component: Logout
+    }, {
+        name: 'certificados',
+        path: '/certificados',
+        component: Certificados
+    }, {
+        name: 'usuarios',
+        path: '/usuarios',
+        component: Usuarios
     }
 ];
 

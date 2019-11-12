@@ -12,21 +12,19 @@
         name: 'App',
         data() {
             return {
-                authenticated: false
+                authenticated: false,
+                carteira: ""
             }
         },
         mounted() {
-            if(!this.authenticated) {
+            if (!this.authenticated) {
                 // eslint-disable-next-line no-console
-                this.$router.replace({ name: "login" });
+                this.$router.replace({name: "login"});
             }
         },
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
-            },
-            logout() {
-                this.authenticated = false;
             }
         }
     }

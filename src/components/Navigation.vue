@@ -9,8 +9,27 @@
                     <router-link to="/about" class="nav-link">About</router-link>
                 </li>
                 <li class="nav-item">
+                    <router-link to="/certificados" class="nav-link">Certificados</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/usuarios" class="nav-link">Usuarios</router-link>
+                </li>
+                <li class="nav-item">
+                    <mdb-dropdown>
+                        <mdb-dropdown-toggle slot="toggle">Basic dropdown</mdb-dropdown-toggle>
+                        <mdb-dropdown-menu>
+                            <mdb-dropdown-item>Action</mdb-dropdown-item>
+                            <mdb-dropdown-item>Another action</mdb-dropdown-item>
+                            <mdb-dropdown-item>Something else here</mdb-dropdown-item>
+                            <div class="dropdown-divider"></div>
+                            <mdb-dropdown-item>Separated link</mdb-dropdown-item>
+                        </mdb-dropdown-menu>
+                    </mdb-dropdown>
+                </li>
+                <li class="nav-item">
                     <router-link to="/logout" class="nav-link">Logout</router-link>
                 </li>
+
             </ul>
         </nav>
         <br/>
@@ -36,7 +55,15 @@
 </style>
 
 <script>
+    import {mdbDropdown, mdbDropdownItem, mdbDropdownMenu, mdbDropdownToggle} from 'mdbvue';
+
     export default {
-        components: {}
+        name: 'DropdownPage',
+        components: {
+            mdbDropdown,
+            mdbDropdownItem,
+            mdbDropdownMenu,
+            mdbDropdownToggle
+        }
     }
 </script>
