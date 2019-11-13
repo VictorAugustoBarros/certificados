@@ -55,8 +55,11 @@
                         this.data.value = response.data;
                         if (response.data["values"]) {
                             document.getElementById("errorLogin").innerHTML = "";
-                            this.$emit("authenticated", true);
-                            this.$emit("carteira", response.data["values"]["carteira"]);
+                            if (response.data["values"]["admin"] === "S"){
+                                this.$parent.admin = "S";
+                            }
+                            this.$parent.authenticated = true;
+                            this.$parent.carteira = response.data["values"]["carteira"];
                             this.$router.push({path: '/index'});
                         } else {
                             document.getElementById("errorLogin").innerHTML = "Registro não encontrado!";

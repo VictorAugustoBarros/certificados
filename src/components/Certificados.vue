@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <mdb-datatable :data="this.registros" striped bordered/>
+                    <mdb-datatable striped bordered/>
                 </div>
                 <div class="col-md-1"></div>
             </div>

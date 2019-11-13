@@ -13,11 +13,9 @@ exports.validateUser = async (req, res,) => {
     });
 
     if (values) {
-        console.log(values);
         return res.status(200).send({"message": "Registro encontrado com sucesso !", "values": values});
 
     } else {
-        console.log({"Mensagem": "Registro não encontrado !"});
         return res.status(200).send({"message": "Registro não encontrado !", "values": ""});
     }
 };
@@ -29,11 +27,33 @@ exports.getUsers = async (req, res,) => {
     });
 
     if (users) {
-        console.log(users);
         return res.status(200).send({"message": "Registros encontrados com sucesso !", "values": users});
 
     } else {
-        console.log({"Mensagem": "Registros não encontrados !"});
         return res.status(200).send({"message": "Registros não encontrados !", "values": ""});
     }
+};
+
+exports.insUser = async (req, res,) => {
+
+    return new Promise(function (resolve, reject) {
+        return Login.create(req.body, function (err) {
+            if (err){
+                reject(new Error(err));
+            }
+            resolve("success")
+        });
+    }).then(result => {
+        return res.status(200).send({
+            "message": "Usuário cadastrado com sucesso !",
+            "status": result,
+            "error": ""
+        });
+    }).catch(err => {
+        return res.status(200).send({
+            "message": "Erro ao cadastrar usuário!",
+            "status": "failed",
+            "error": err
+        });
+    });
 };

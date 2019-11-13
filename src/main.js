@@ -31,7 +31,8 @@ import Login from './components/Login.vue';
 import About from './components/About.vue';
 import Logout from './components/Logout.vue';
 import Certificados from './components/Certificados.vue';
-import Usuarios from './components/Usuarios.vue';
+import ListarUsuarios from './components/ListarUsuarios.vue';
+import InserirUsuarios from './components/InserirUsuarios.vue';
 
 const routes = [
     {
@@ -55,9 +56,13 @@ const routes = [
         path: '/certificados',
         component: Certificados
     }, {
-        name: 'usuarios',
-        path: '/usuarios',
-        component: Usuarios
+        name: 'listar_usuarios',
+        path: '/listar_usuarios',
+        component: ListarUsuarios
+    }, {
+        name: 'inserir_usuarios',
+        path: '/inserir_usuarios',
+        component: InserirUsuarios
     }
 ];
 

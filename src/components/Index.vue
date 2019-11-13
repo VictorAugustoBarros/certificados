@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation></Navigation>
-        <h1>Bem Vindo:</h1>
+
     </div>
 </template>
 
