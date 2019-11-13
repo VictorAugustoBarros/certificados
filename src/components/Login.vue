@@ -60,7 +60,7 @@
                             }
                             this.$parent.authenticated = true;
                             this.$parent.carteira = response.data["values"]["carteira"];
-                            this.$router.push({path: '/index'});
+                            this.$router.replace({path: '/index'});
                         } else {
                             document.getElementById("errorLogin").innerHTML = "Registro não encontrado!";
                         }

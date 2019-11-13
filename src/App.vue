@@ -3,7 +3,7 @@
         <div id="nav">
             <router-link v-if="authenticated" to="/login" replace></router-link>
         </div>
-        <router-view @authenticated="setAuthenticated"/>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -12,19 +12,14 @@
         name: 'App',
         data() {
             return {
-                authenticated: false,
-                carteira: ""
+                authenticated: false
             }
         },
         mounted() {
+
             if (!this.authenticated) {
                 // eslint-disable-next-line no-console
                 this.$router.replace({name: "login"});
-            }
-        },
-        methods: {
-            setAuthenticated(status) {
-                this.authenticated = status;
             }
         }
     }

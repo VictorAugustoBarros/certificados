@@ -33,9 +33,14 @@ import Logout from './components/Logout.vue';
 import Certificados from './components/Certificados.vue';
 import ListarUsuarios from './components/ListarUsuarios.vue';
 import InserirUsuarios from './components/InserirUsuarios.vue';
+import PageNotFound from './components/PageNotFound.vue';
 
 const routes = [
     {
+        name: 'pageNotFound',
+        path: "*",
+        component: PageNotFound,
+    },{
         name: 'index',
         path: '/index',
         component: Index
@@ -70,6 +75,20 @@ const router = new VueRouter({mode: 'history', routes: routes});
 
 new Vue({
     el: '#app',
+    mode: 'history',
     router,
     render: createEl => createEl(App)
+});
+
+router.beforeEach((to, from, next) => {
+    // redirect to login page if not logged in and trying to access a restricted page
+    const publicPages = ['/login', '/register'];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = localStorage.getItem('user');
+
+    if (authRequired && !loggedIn) {
+        return next('/login');
+    }
+
+    next();
 });
