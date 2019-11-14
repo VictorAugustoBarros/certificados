@@ -1,25 +1,30 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link v-if="authenticated" to="/login" replace></router-link>
-        </div>
+        <Index v-if="this.token"></Index>
+        <Login v-else></Login>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+    import Login from './components/login/Login.vue'
+    import Index from './components/index/Index.vue'
+
     export default {
         name: 'App',
         data() {
             return {
-                authenticated: false
+                token: ""
             }
         },
-        mounted() {
-
-            if (!this.authenticated) {
-                // eslint-disable-next-line no-console
-                this.$router.replace({name: "login"});
+        components: {
+            Login,
+            Index
+        },
+        updated: function () {
+            this.token = localStorage.getItem('token');
+            if (this.token == null) {
+                this.$router.push("/login")
             }
         }
     }

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 4000;
+const PORT = 4001;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, {useNewUrlParser: true}).then(

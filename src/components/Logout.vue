@@ -1,14 +1,15 @@
 <template>
-    <label>Teste</label>
+    <div></div>
 </template>
 
 <script>
     export default {
         name: "Logout",
         mounted() {
-            this.$router.replace({path: '/login', params: {authenticated: false}});
-        },
+            localStorage.removeItem("token");
+        }
     }
+
 </script>
 
 <style scoped>

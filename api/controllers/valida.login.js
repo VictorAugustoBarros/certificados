@@ -44,11 +44,8 @@ exports.insUser = async (req, res,) => {
             resolve("success")
         });
     }).then(result => {
-        return res.status(200).send({
-            "message": "Usuário cadastrado com sucesso !",
-            "status": result,
-            "error": ""
-        });
+        return res.status(200).send(result["_id"]);
+
     }).catch(err => {
         return res.status(200).send({
             "message": "Erro ao cadastrar usuário!",
