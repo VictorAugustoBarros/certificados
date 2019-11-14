@@ -22,6 +22,11 @@ Vue.config.productionTip = false;
 
 const router = new VueRouter({mode: 'history', routes: routes});
 
+// router.beforeEach((to, from, next) => {
+//     if (!isAuthenticated) next('/login');
+//     else next()
+// });
+
 new Vue({
     el: '#app',
     mode: 'history',

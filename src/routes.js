@@ -5,6 +5,13 @@ import InserirUsuarios from './components/InserirUsuarios/InserirUsuarios.vue';
 import PageNotFound from './components/pageNotFound/PageNotFound.vue';
 import {isSignedIn} from "@/auth/auth";
 
+async function valida_login(next) {
+    let loggedIn = await isSignedIn();
+    if (loggedIn) {
+        next();
+    }
+}
+
 export const routes = [
     {
         path: "/"
@@ -17,21 +24,13 @@ export const routes = [
     {
         path: '/login',
         async beforeEnter(_, __, next) {
-            let loggedIn = await isSignedIn();
-            if (loggedIn) {
-                next();
-            }
+            await valida_login(next)
         }
     },
     {
         path: '/index',
         async beforeEnter(to, from, next) {
-            let loggedIn = await isSignedIn();
-            if (loggedIn) {
-                next();
-                return;
-            }
-            next("/")
+            await valida_login(next)
         }
     },
     {
@@ -39,24 +38,14 @@ export const routes = [
         path: '/sobre',
         component: About,
         async beforeEnter(_, __, next) {
-            let loggedIn = await isSignedIn();
-            if (loggedIn) {
-                next();
-                return;
-            }
-            next("/")
+            await valida_login(next)
         }
     }, {
         name: 'listar_usuarios',
         path: '/listar_usuarios',
         component: ListarUsuarios,
         async beforeEnter(_, __, next) {
-            let loggedIn = await isSignedIn();
-            if (loggedIn) {
-                next();
-                return;
-            }
-            next("/")
+            await valida_login(next)
         }
     },
     {
@@ -64,12 +53,7 @@ export const routes = [
         path: '/inserir_usuarios',
         component: InserirUsuarios,
         async beforeEnter(_, __, next) {
-            let loggedIn = await isSignedIn();
-            if (loggedIn) {
-                next();
-                return;
-            }
-            next("/")
+            await valida_login(next)
         }
     },
     {
