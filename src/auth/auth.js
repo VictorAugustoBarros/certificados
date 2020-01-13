@@ -1,7 +1,7 @@
 import request from './request';
 
 export async function signIn(carteira, password) {
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
 
     const token = await request('POST', '/login_user', {
         carteira,

@@ -26,6 +26,9 @@ exports.getUsers = async (req, res,) => {
         return (result)
     });
 
+    // eslint-disable-next-line no-console
+    console.log(users);
+
     if (users) {
         return res.status(200).send({"message": "Registros encontrados com sucesso !", "values": users});
 

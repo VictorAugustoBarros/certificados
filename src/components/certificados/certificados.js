@@ -36,7 +36,7 @@ export default {
         }
     },
     mounted() {
-        let uri = 'http://localhost:4000/get_users';
+        let uri = 'http://localhost:4001/get_users';
         this.axios
             .post(uri, "", this.data.headers)
             .then(response => {

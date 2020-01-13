@@ -38,7 +38,7 @@ export default {
                 "admin": admin
             };
 
-            let uri = "http://localhost:4000/ins_user";
+            let uri = "http://localhost:4001/ins_user";
             this.axios
                 .post(uri, data, this.data.headers)
                 .then(response => {
